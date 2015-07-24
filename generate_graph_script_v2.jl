@@ -24,7 +24,7 @@ function generate_graph_script_v2(n::Int64,p::Float64)
         A = create_graph(p,int(n[exp_id]),int(d[exp_id]),delta)
         cc = scomponents(A)
         lcc = cc.sizes[1]
-        if lcc > n*(1 - 10^-4)
+        if lcc < n*(1 - 10.0^-4)
             error("Largest connected component is too small")
         end
         (P,V) = pre_pagerank_solver(A)
