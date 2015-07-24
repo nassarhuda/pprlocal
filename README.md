@@ -12,7 +12,7 @@ using MatrixNetworks
 ```
 
 #To use this code:
-cd to the pprlocal directory and from julia"
+cd to the pprlocal directory and from julia
 ```
 include("generate_graph_script_v2.jl")
 n = 10^4;
