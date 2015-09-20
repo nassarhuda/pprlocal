@@ -7,7 +7,6 @@ function generate_graph_script_v2(n::Int64,p::Float64)
     #####################################################
     d = floor(n.^(1/2))
     delta = 2 # min degree
-    p = 0.5 # power law
     
     # epsilon accuracy:
     eps_accuracy = [1e-1, 1e-2, 1e-3, 1e-4]
@@ -18,7 +17,7 @@ function generate_graph_script_v2(n::Int64,p::Float64)
     # count the number of nonzeros:
     
     k = 1 # number of vectors to pick
-    NNZEROS = zeros(Int64,length(eps_accuracy),length(alpha),length(n))
+    NNZEROS = zeros(Int64,length(eps_accuracy),length(alpha))
     for exp_id = 1:length(n)
         
         A = create_graph(p,int(n[exp_id]),int(d[exp_id]),delta)
