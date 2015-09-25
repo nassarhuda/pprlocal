@@ -22,6 +22,6 @@ p = 0.5;
 NNZEROS = generate_graph_script_v2(n,p)
 ```
 
-NNZEROS[i,j] = number of nonzeros of a graph of size n with power-law degree distribution p and at epsilon_accuracy = eps_values[i] and PageRank problem solved with alpha = alpha_values[j]   
+NNZEROS[i,j] = number of nonzeros of a graph of size n with decay exponent p, at epsilon_accuracy = eps_values[i] and PageRank problem solved with alpha = alpha_values[j]   
 where eps_values = [1e-1, 1e-2, 1e-3, 1e-4]   
 and alpha_values = [0.25, 0.3, 0.5, 0.65, 0.85]
