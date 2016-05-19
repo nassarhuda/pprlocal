@@ -1,0 +1,7 @@
+include("cl_YouTube.jl")
+degs = npzread("youtube-degree-seq.npz")
+n = length(degs)
+dmax = degs[1]
+dmin = degs[end]
+
+(A,deg,src,dst) = chung_lu_YouTube(n,dmax,dmin,degs)
