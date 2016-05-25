@@ -1,11 +1,22 @@
 using NPZ
+using Plots
+pyplot()
 include("create_graph_funcs.jl")
 include("solve_local_PageRank3.jl")
-p = 0.5
+
+
 
 ## read CL degree seq and use bisquik to generate the graph and then solve PR
+function CL_BK_comparison(n,p,alpha)
 
-fn = join(["CL_1e7/CL_degs_n7.0_p",p,".npz"])
+N = copy(n)
+ex = round(Int,log10(n))
+dirloc = join(["TT_BK_CL_1e",ex])
+if !isdir(dirloc)
+    mkdir(dirloc)
+end
+
+fn = join(["CL_1e",ex,"/CL_degs_n",ex,".0_p",p,".npz"])
 degs = npzread(fn)
 degs = vec(degs)
 degs = sort(degs,rev=true)
@@ -14,19 +25,13 @@ dmax = degs[1]
 dmin = degs[end]
 (src,dst,l) = bisquik_graph(degs,10,n)
 P = sparse(src,dst,1./degs[dst],n,n)
-solve_local_PageRank3(P,n,p,"TT",10^7)
+solve_local_PageRank3(P,n,p,"TT",N)
 
-using Plots
-pyplot()
-using NPZ
-
-# alpha = [0.25;0.3;0.5;0.65;0.85]
-alpha = 0.25
 delta = 2
 w = 1:0.2:4
 eps_accuracy = 10.^(-w)
-N = 10^7
-e = 7
+
+e = ex
 eps_accuracy_reciprocal = 1./eps_accuracy
 for i = 1:length(p)
     println("p val is $p")
@@ -74,7 +79,7 @@ for i = 1:length(p)
         Plots.yaxis!(:log10,"nonzeros retained")
         imgfile = join(["n=",N,"p=",p[i],"alpha=",alpha[j]])
         
-        loc = join(["TT_BK_CL_1e",e,"/",imgfile,".pdf"])
+        loc = join([dirloc,"/",imgfile,".pdf"])
         PyPlot.gcf()[:set_size_inches](3,2.5)
         PyPlot.gca()[:yaxis][:grid](color="lightgray", linestyle="solid", linewidth=0.4)
         PyPlot.gca()[:xaxis][:grid](color="lightgray", linestyle="solid", linewidth=0.4)
@@ -82,4 +87,5 @@ for i = 1:length(p)
         close()
 
     end
+end
 end

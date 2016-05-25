@@ -1,5 +1,5 @@
 # experiment to check the localization pattern on graph size 10^9, p = .95, alpha = .85
-#read from store_nnz and plot
+# read from store_nnz and plot
 using NPZ
 using Plots
 pyplot()
@@ -49,7 +49,7 @@ Plots.yaxis!(:log10,"nonzeros retained")
 
 imgfile = join(["block_n=",e,"p=",p,"alpha=",alpha,"2.pdf"])
         
-PyPlot.gcf()[:set_size_inches](3.5,3)
+PyPlot.gcf()[:set_size_inches](3,2.5)
 PyPlot.gca()[:yaxis][:grid](color="lightgray", linestyle="solid", linewidth=0.4)
 PyPlot.gca()[:xaxis][:grid](color="lightgray", linestyle="solid", linewidth=0.4)
 savefig(imgfile)

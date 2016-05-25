@@ -2,13 +2,13 @@ include("create_graph_funcs.jl")
 include("solve_local_PageRank3.jl")
 using MatrixNetworks
 using NPZ
+using Plots
+pyplot()
 
+function battle_of_norms(n,p,alpha)
 ## battle of norms script
-p = 0.95
-alpha = 0.85
-N = 10^7
-n = 10^7
-e = 7
+N = copy(n)
+e = round(Int,log10(n))
 
 q = 2:0.02:7
 w = [collect(1:100);ceil(10.^q)]
@@ -56,8 +56,7 @@ end
 filename = "ALLNORMS.npz"
 npzwrite(filename,ALLNORMS)
 #######################################
-using Plots
-pyplot()
+
 AN = npzread("ALLNORMS.npz")
 Plots.plot(w,AN[:,1],lab = "1-norm", w = 1)
 Plots.plot!(w,AN[:,2], lab = "2-norm", w = 1)
@@ -72,3 +71,4 @@ PyPlot.gca()[:xaxis][:grid](color="lightgray", linestyle="solid", linewidth=0.4)
 tt = join(["battle_n=",e,"p=",p,"alpha=",alpha,".pdf"])
 savefig(tt)
 close()
+end

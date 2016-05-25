@@ -1,10 +1,19 @@
 # script that generates a chung lu graph, and solve seeded PageRank on it
 include("chung_lu.jl")
+include("degseq.jl")
 include("solve_local_PageRank3.jl")
 using MatrixNetworks
 using NPZ
-p = [0.5;0.75;0.95]
+
 function runscript_CL(n::Int64)
+
+ex = round(Int,log10(n))
+dirloc = join(["CL_1e",ex])
+if !isdir(dirloc)
+    mkdir(dirloc)
+end
+
+p = [0.5;0.75;0.95]
 N = copy(n)
 d = round(Int,sqrt(n))
 m = round(Int,n+1.2*n)
@@ -47,11 +56,11 @@ for i = 1:length(p)
         FT = zeros(Int64,length(src),2)
         FT[:,1] = src
         FT[:,2] = dst
-        datafile = join(["CL_src_dst_n",log10(N),"_p",p[i],".npz"]);
+        datafile = join([dirloc,"/CL_src_dst_n",log10(N),"_p",p[i],".npz"]);
         npzwrite(datafile,FT)
         FT = 0
         gc()
-        degsfile = join(["CL_degs_n",log10(N),"_p",p[i],".npz"]);
+        degsfile = join([dirloc,"/CL_degs_n",log10(N),"_p",p[i],".npz"]);
         npzwrite(degsfile,degs)
     
         n = max(maximum(src),maximum(dst))
@@ -61,7 +70,8 @@ for i = 1:length(p)
         dst = 0
         degs = 0
         gc()
-        @time solve_local_PageRank3(P,n,p[i],"CL",N)
+        gga = join([dirloc,"/CL"])
+        @time solve_local_PageRank3(P,n,p[i],gga,N)
         println("was here")
     end
     println("lcc is $lcc")

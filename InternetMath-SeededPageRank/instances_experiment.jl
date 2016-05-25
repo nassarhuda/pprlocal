@@ -2,8 +2,15 @@ include("create_graph_funcs.jl")
 include("solve_local_PageRank3.jl")
 using MatrixNetworks
 using NPZ
+
+function instances_experiment(n::Int64)
 p = [0.5;0.75;0.95]
-n = 10^7
+e = round(Int,log10(n))
+dirloc = join(["BK_1e",e,"_instances"])
+if !isdir(dirloc)
+    mkdir(dirloc)
+end
+
 d = round(Int,sqrt(n))
 delta = 2
 total_instances_nb = 5
@@ -28,8 +35,9 @@ for i = 1:length(p)
     dst = 0
     degs = 0
     gc()
-    bk = join(["BK_instance_",instance,"_"])
-    @time solve_local_PageRank3(P,n,p[i],bk)
+    bk = join([dirloc,"/BK_instance_",instance,"_"])
+    @time solve_local_PageRank3(P,n,p[i],bk,n)
 end
 println("instance_ended")
+end
 end

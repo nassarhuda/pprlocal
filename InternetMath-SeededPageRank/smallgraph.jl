@@ -34,3 +34,4 @@ end
 graphplot(A,xy)
 PyPlot.scatter(xy[:,1],xy[:,2],12,edgecolors="none",zorder=2)
 savefig("hundred_nodes_graph.pdf")
+close()

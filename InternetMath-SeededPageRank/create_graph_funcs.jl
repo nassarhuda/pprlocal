@@ -84,7 +84,7 @@ function create_graph(p::Float64,n::Int64,dmax::Int64,dmin::Int64)
 	cc = scomponents(A)
     lcc = cc.sizes[1]
     println("lcc is $lcc")
-    if lcc < n*(1 - 10.0^-3)
+    if lcc < n*(0.95)
         error("Largest connected component is too small")
     end
     A = 0
