@@ -1,0 +1,13 @@
+amazon0601.mat
+as-caida20071105.mat
+as-skitter.mat
+ca-AstroPh.mat
+ca-CondMat.mat
+ca-HepPh.mat
+dblp.mat
+email-Enron.mat
+p2p-Gnutella31.mat
+web-BerkStan.mat
+web-Google.mat
+YouTube-ChungLu-adj.mat
+youtube.mat
