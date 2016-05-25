@@ -6,7 +6,7 @@
 *   Obtain the datasets from SNAP repository, and put them in the directory `real-world-experiments/data/`
 *   Run `generate_deg_seq_plots.m` from `real-world-experiments/degree-sequences/`
 
-### Table 2:
+### Table 2
 *   Run `generate_tab_of_deg_seq.m` from `real-world-experiments/degree-sequences/`
 
 ### Figure 3
@@ -25,7 +25,7 @@
 *   Generate the results by running `youtube_pagerank.m` and `youtube_synthetic_pagerank.m` from `real-world-experiments/youtube-localization/`
 *   Make the plots by running `plotting_synthetic_youtube.m` from `real-world-experiments/youtube_localization/`
 
-### Figure 7:
+### Figure 7
 
 *   (left): `include("smallgraph.jl")`
 *   (right): Code used to generate the data is in wheel.jl (user can choose to rerun in case they have enough RAM)
