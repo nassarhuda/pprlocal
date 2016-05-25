@@ -27,12 +27,12 @@
 
 ### Figure 7:
 
-*   (left): include("smallgraph.jl")
+*   (left): `include("smallgraph.jl")`
 *   (right): Code used to generate the data is in wheel.jl (user can choose to rerun in case they have enough RAM)
 ``
-cd("BK_1e9/")
-include("BK_wheel_1e9.jl")
-cd("..")
+    cd("BK_1e9/")
+    include("BK_wheel_1e9.jl")
+    cd("..")
 ``
 
 ### Figure 8
