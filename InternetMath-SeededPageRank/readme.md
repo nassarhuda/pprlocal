@@ -2,6 +2,10 @@
 
 *** Note: most of these scripts rely on the data being pregenerated. Some of this data is provided in this repo. All data can be generated and instructions to do so are provided here.
 
+### Figure 1
+*   Go to `youtube-localization` 
+*   regenerate plots using the ipynb `YouTube Localization.ipynb`
+
 ### Figure 2
 *   Obtain the datasets from SNAP repository, and put them in the directory `real-world-experiments/data/`
 *   Run `generate_deg_seq_plots.m` from `real-world-experiments/degree-sequences/`
@@ -24,8 +28,9 @@
 ### Figure 6
 *   Generate the results by running `youtube_pagerank.m` and `youtube_synthetic_pagerank.m` from `real-world-experiments/youtube-localization/`
 *   Make the plots by running `plotting_synthetic_youtube.m` from `real-world-experiments/youtube_localization/`
+* For columns 2 and 3, use the folders `email-enron-localizaiton` and `amazon-localization`
 
-### Figure 7
+### Figure 7 (from old version of the paper)
 
 *   (left): `include("smallgraph.jl")`
 *   (right): Code used to generate the data is in wheel.jl (user can choose to rerun in case they have enough RAM)
@@ -35,10 +40,10 @@
     cd("..")
 ``
 
-### Figure 8
+### Figure 8 (from old version of the paper)
 *   Note that this data has been pregenerated via `include("store_nnz.jl")`
 *   Run `include("analyze_localization.jl")`
 
-### Figure 9
+### Figure 9 (from old version of the paper)
 *   Run `include("battle_of_norms.jl")` and then `battle_of_norms(n,p,alpha)`. As an example, run `battle_of_norms(10^4,0.95,0.85)`
 
